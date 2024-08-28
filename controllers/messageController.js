@@ -21,7 +21,11 @@ const links = [
 // @desc Render all posts (index)
 // @route GET /
 const renderIndex = (req, res, next) => {
-  res.render("index", { messages: messages, links: links });
+  res.render("index", {
+    title: "Mini Messageboard",
+    messages: messages,
+    links: links,
+  });
 };
 
 // @desc Create new message
@@ -54,4 +58,16 @@ const renderSingleMessage = (req, res, next) => {
   res.render("singleMessage", { message: message });
 };
 
-export { messages, createMessage, renderIndex, renderSingleMessage };
+// @desc View form
+// @route GET /form
+const renderForm = (req, res, next) => {
+  res.render("form", { title: "Adding new message" });
+};
+
+export {
+  messages,
+  createMessage,
+  renderIndex,
+  renderSingleMessage,
+  renderForm,
+};

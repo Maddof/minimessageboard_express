@@ -3,16 +3,16 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Homepage</title>
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/styles.css" />
   </head>
   <body>
-    <h1>Homepage of index ejs</h1>
+    <h1><%= title %></h1>
     <%- include('navbar', {links: links}) %>
     <ul>
       <% messages.forEach((message) => { %>
       <li>
         <%= message.user %> : <%= message.text %> <br />
-        Added on: <%= message.added.toLocaleString() %><br />
         <!-- Link to view single message -->
         <a href="/message/<%=message.id %>">View details</a>
       </li>

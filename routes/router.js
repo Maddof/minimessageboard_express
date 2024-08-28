@@ -3,15 +3,14 @@ import {
   createMessage,
   renderIndex,
   renderSingleMessage,
+  renderForm,
 } from "../controllers/messageController.js";
 
 const router = express.Router();
 
 router.get("/", renderIndex);
 
-router.get("/new", (req, res) => {
-  res.render("form");
-});
+router.get("/new", renderForm);
 
 router.get("/message/:id", renderSingleMessage);
 
