@@ -16,10 +16,13 @@
 
     <main id="main-wrapper">
       <h2>Messages</h2>
+      <button id="sort-button">SORT by NAME</button>
+      <p class="sort-status">Sorted by: Default</p>
       <ul class="messages-list">
         <% messages.forEach((message) => { %>
         <li>
-          <b><%= message.user %></b>: <%= message.text %> <br />
+          <span class="username"><b><%= message.user %></b></span
+          >: <%= message.text %> <br />
           <!-- Link to view single message -->
           <a href="/message/<%=message.id %>">View details</a>
         </li>
@@ -30,5 +33,6 @@
     <footer>
       <h3>Glorious Footer</h3>
     </footer>
+    <script src="/main.js"></script>
   </body>
 </html>

@@ -26,6 +26,7 @@ header {
 }
 
 footer {
+  margin-top: auto;
   padding: 1rem;
   border-top: 2px solid rgb(54, 56, 83);
 }
@@ -45,7 +46,7 @@ button:hover {
 }
 
 #main-wrapper {
-  min-height: 300px;
+  min-height: 340px;
   padding: 1rem;
 }
 
@@ -60,7 +61,7 @@ button:hover {
 .add-new-post-form {
   display: flex;
   flex-direction: column;
-  max-width: 40%;
+  max-width: 360px;
 }
 
 .messages-list li {
