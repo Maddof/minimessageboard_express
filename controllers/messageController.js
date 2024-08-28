@@ -32,6 +32,7 @@ const renderIndex = (req, res, next) => {
 // @route POST /new
 const createMessage = (req, res, next) => {
   const newMessage = {
+    id: messages.length + 1,
     text: req.body.message,
     user: req.body.name,
     added: new Date(),
