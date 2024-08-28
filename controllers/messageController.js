@@ -1,15 +1,28 @@
 const messages = [
   {
+    id: 1,
     text: "Hi there!",
     user: "Amando",
     added: new Date(),
   },
   {
+    id: 2,
     text: "Hello World!",
     user: "Charles",
     added: new Date(),
   },
 ];
+
+const links = [
+  { href: "/", text: "Home" },
+  { href: "/new", text: "New message" },
+];
+
+// @desc Render all posts (index)
+// @route GET /
+const renderIndex = (req, res, next) => {
+  res.render("index", { messages: messages, links: links });
+};
 
 // @desc Create new message
 // @route POST /new
@@ -28,4 +41,17 @@ const createMessage = (req, res, next) => {
   res.status(201).redirect("/");
 };
 
-export { messages, createMessage };
+// @desc View single message
+// @route GET /message/:id
+const renderSingleMessage = (req, res, next) => {
+  const id = parseInt(req.params.id);
+  const message = messages.find((message) => message.id === id);
+  if (!message) {
+    const error = new Error(`A message with the id of ${id} was not found`);
+    error.status = 404;
+    return next(error);
+  }
+  res.render("singleMessage", { message: message });
+};
+
+export { messages, createMessage, renderIndex, renderSingleMessage };

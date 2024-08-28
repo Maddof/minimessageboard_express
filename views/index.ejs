@@ -1,20 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Homepage</title>
-</head>
-<body>
-  <h1>Homepage of index ejs</h1>
-  <%- include('navbar', {links: links}) %>
-  <ul>
-    <% messages.forEach((message) => { %>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Homepage</title>
+  </head>
+  <body>
+    <h1>Homepage of index ejs</h1>
+    <%- include('navbar', {links: links}) %>
+    <ul>
+      <% messages.forEach((message) => { %>
       <li>
-        <%= message.user %> : <%= message.text %> <br>
-        Added on: <%= message.added.toLocaleString() %>
+        <%= message.user %> : <%= message.text %> <br />
+        Added on: <%= message.added.toLocaleString() %><br />
+        <!-- Link to view single message -->
+        <a href="/message/<%=message.id %>">View details</a>
       </li>
-    <%}) %>
-  </ul>
-</body>
+      <%}) %>
+    </ul>
+  </body>
 </html>

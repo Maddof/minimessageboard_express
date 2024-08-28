@@ -1,20 +1,19 @@
 import express from "express";
-import { createMessage, messages } from "../controllers/messageController.js";
+import {
+  createMessage,
+  renderIndex,
+  renderSingleMessage,
+} from "../controllers/messageController.js";
 
 const router = express.Router();
 
-const links = [
-  { href: "/", text: "Home" },
-  { href: "/new", text: "New message" },
-];
-
-router.get("/", (req, res) => {
-  res.render("index", { messages: messages, links: links });
-});
+router.get("/", renderIndex);
 
 router.get("/new", (req, res) => {
   res.render("form");
 });
+
+router.get("/message/:id", renderSingleMessage);
 
 router.post("/new", createMessage);
 
