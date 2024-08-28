@@ -55,13 +55,17 @@ const renderSingleMessage = (req, res, next) => {
     error.status = 404;
     return next(error);
   }
-  res.render("singleMessage", { message: message });
+  res.render("singleMessage", {
+    title: "Message details",
+    links: links,
+    message: message,
+  });
 };
 
 // @desc View form
 // @route GET /form
 const renderForm = (req, res, next) => {
-  res.render("form", { title: "Adding new message" });
+  res.render("form", { title: "Adding new message", links: links });
 };
 
 export {

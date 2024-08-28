@@ -7,12 +7,22 @@
     <link rel="stylesheet" href="/styles.css" />
   </head>
   <body>
-    <h1>Message Detail</h1>
-    <p><strong>User:</strong> <%= message.user %></p>
-    <p><strong>Message:</strong> <%= message.text %></p>
-    <p><strong>Added on:</strong> <%= message.added.toLocaleString() %></p>
-
-    <!-- Link to go back to the messages list -->
-    <a href="/">Back to Messages</a>
+    <header>
+      <div class="header-wrap">
+        <h1>Mini Message Board</h1>
+        <%- include('navbar', {links: links}) %>
+      </div>
+    </header>
+    <main id="main-wrapper">
+      <h2>Message Detail</h2>
+      <p><strong>User:</strong> <%= message.user %></p>
+      <p><strong>Message:</strong> <%= message.text %></p>
+      <p><strong>Added on:</strong> <%= message.added.toLocaleString() %></p>
+      <!-- Link to go back to the messages list -->
+      <a href="/">Back to Messages</a>
+    </main>
+    <footer>
+      <h3>Glorious Footer</h3>
+    </footer>
   </body>
 </html>

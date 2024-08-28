@@ -1,8 +1,64 @@
 body {
   background-color: rgb(29, 30, 44);
   color: aliceblue;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 90svh;
+  width: 800px;
+  margin-inline: auto;
+  padding: 2rem;
 }
 
 a {
+  transition-duration: 200ms;
   color: aquamarine;
+  text-decoration: none;
+}
+
+a:hover {
+  color: rgb(38, 100, 80);
+}
+
+header {
+  padding: 1rem;
+  border-bottom: 2px solid rgb(54, 56, 83);
+}
+
+footer {
+  padding: 1rem;
+  border-top: 2px solid rgb(54, 56, 83);
+}
+
+button {
+  text-transform: uppercase;
+  font-weight: 700;
+  background-color: aquamarine;
+  border: none;
+  padding: 0.25em;
+  transition-duration: 200ms;
+}
+
+button:hover {
+  cursor: pointer;
+  background-color: rgb(38, 100, 80);
+}
+
+#main-wrapper {
+  min-height: 300px;
+  padding: 1rem;
+}
+
+.nav_main {
+  list-style-type: none;
+  display: flex;
+  padding: 0;
+  margin: 0;
+  gap: 1rem;
+}
+
+.add-new-post-form {
+  display: flex;
+  flex-direction: column;
+  max-width: 40%;
 }

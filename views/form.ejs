@@ -7,12 +7,25 @@
     <link rel="stylesheet" href="/styles.css" />
   </head>
   <body>
-    <h1><%= title %></h1>
-    <form action="/new" method="POST">
-      <input type="text" id="name" name="name" /><br />
-      <input type="text" id="message" name="message" /><br />
+    <header>
+      <div class="header-wrap">
+        <h1>Mini Message Board</h1>
+        <%- include('navbar', {links: links}) %>
+      </div>
+    </header>
 
-      <button type="submit">Add post</button>
-    </form>
+    <main id="main-wrapper">
+      <h2><%= title %></h2>
+      <form action="/new" method="POST" class="add-new-post-form">
+        <label for="name">Name: </label>
+        <input type="text" id="name" name="name" /><br />
+        <label for="message">Message: </label>
+        <textarea name="message" id="message"></textarea><br />
+        <button type="submit">Add post</button>
+      </form>
+    </main>
+    <footer>
+      <h3>Glorious Footer</h3>
+    </footer>
   </body>
 </html>
