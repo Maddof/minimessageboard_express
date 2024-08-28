@@ -1,8 +1,9 @@
 import express from "express";
 import path from "path";
+import { router } from "./routes/router.js";
 
 const app = express();
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 3000;
 
 // Get directory & file names
 const __filename = import.meta.filename;
@@ -10,6 +11,7 @@ const __dirname = import.meta.dirname;
 
 // EJS VIEW TEMPLATE SETUP
 
+// Setup static folder
 const assetsPath = path.join(__dirname, "public");
 app.use(express.static(assetsPath));
 
@@ -20,9 +22,13 @@ app.set("views", path.join(__dirname, "views"));
 
 // END EJS VIEW TEMPLATE SETUP
 
-app.get("/", (req, res) => {
-  res.render("index");
-});
+// Body parser middleware
+// parse the form data into req.body
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+
+// Use the router
+app.use("/", router);
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
