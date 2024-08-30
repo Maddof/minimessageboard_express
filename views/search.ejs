@@ -15,14 +15,20 @@
     </header>
 
     <main id="main-wrapper">
-      <h2>Error 404, page not found</h2>
-      <p>Could not find this page</p>
-      <a href="/">Return home</a>
+      <h2>Search</h2>
+      <p>Search message here</p>
+
+      <form action="/search-result" method="GET" class="search-form">
+        <label for="name">Name: </label>
+        <input type="text" id="name" name="name" />
+        <br />
+        <br />
+        <button type="submit">Search message</button>
+      </form>
     </main>
 
     <footer>
       <h3>Glorious Footer</h3>
     </footer>
-    <script src="/main.js"></script>
   </body>
 </html>

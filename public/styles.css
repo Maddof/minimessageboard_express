@@ -38,7 +38,7 @@ button {
   font-weight: 700;
   background-color: aquamarine;
   border: none;
-  padding: 0.25em;
+  padding: 0.5em 1em;
   transition-duration: 200ms;
 }
 
@@ -68,4 +68,10 @@ button:hover {
 
 .messages-list li {
   margin-bottom: 0.5em;
+}
+
+.search-result__wrapper {
+  display: flex;
+  gap: 0.5em;
+  margin-bottom: 0.8em;
 }
