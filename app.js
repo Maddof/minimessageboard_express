@@ -1,5 +1,6 @@
 import express from "express";
 import path from "path";
+import { fileURLToPath } from "url";
 import { router } from "./routes/router.js";
 import errorHandler from "./middleware/errorHandler.js";
 
@@ -7,8 +8,12 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 // Get directory & file names
-const __filename = import.meta.filename;
-const __dirname = import.meta.dirname;
+// const __filename = import.meta.filename;
+// const __dirname = import.meta.dirname;
+
+// Get directory & file names using ES module compatible methods
+const __filename = fileURLToPath(import.meta.url); // Correct way to get __filename
+const __dirname = path.dirname(__filename); // Correct way to get __dirname
 
 // EJS VIEW TEMPLATE SETUP
 
