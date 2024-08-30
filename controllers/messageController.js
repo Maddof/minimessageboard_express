@@ -1,6 +1,5 @@
 import { body, validationResult } from "express-validator";
 
-const alphaErr = "must only contain letters.";
 const lengthNameErr = "must be between 1 and 10 characters.";
 const lengthMessageErr = "must be between 1 and 50 characters.";
 
@@ -49,8 +48,6 @@ const renderIndex = (req, res, next) => {
 const validateMessage = [
   body("name")
     .trim()
-    .isAlpha()
-    .withMessage(`Name ${alphaErr}`)
     .isLength({ min: 1, max: 10 })
     .withMessage(`Name ${lengthNameErr}`),
   body("message")
