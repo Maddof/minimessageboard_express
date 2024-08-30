@@ -49,10 +49,14 @@ const validateMessage = [
   body("name")
     .trim()
     .isLength({ min: 1, max: 10 })
+    .blacklist('<>"/') // Remove specific unwanted characters
+    .escape() // Escape HTML characters
     .withMessage(`Name ${lengthNameErr}`),
   body("message")
     .trim()
     .isLength({ min: 1, max: 50 })
+    .blacklist('<>"/') // Remove specific unwanted characters
+    .escape() // Escape HTML characters
     .withMessage(`Message ${lengthMessageErr}`),
 ];
 
@@ -63,6 +67,7 @@ const createMessage = [
   (req, res, next) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
+      console.log(errors);
       return res.status(400).render("form", {
         title: "Error with your message",
         links: links,
