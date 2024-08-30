@@ -24,11 +24,20 @@
         onsubmit="return validateForm()"
       >
         <label for="name">Name: </label>
-        <input type="text" id="name" name="name" /><br />
+        <input
+          type="text"
+          id="name"
+          name="name"
+          value="<%= typeof name !== 'undefined' ? name : '' %>"
+        />
+        <br />
         <label for="message">Message: </label>
-        <textarea name="message" id="message"></textarea><br />
+        <textarea name="message" id="message">
+<%= typeof message !== 'undefined' ? message.trim() : '' %></textarea
+        ><br />
         <button type="submit">Add post</button>
       </form>
+      <%- include("partials/errors.ejs") %>
     </main>
     <footer>
       <h3>Glorious Footer</h3>

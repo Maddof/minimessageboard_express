@@ -1,3 +1,9 @@
+import { body, validationResult } from "express-validator";
+
+const alphaErr = "must only contain letters.";
+const lengthNameErr = "must be between 1 and 10 characters.";
+const lengthMessageErr = "must be between 1 and 50 characters.";
+
 const messages = [
   {
     id: 1,
@@ -40,23 +46,63 @@ const renderIndex = (req, res, next) => {
   });
 };
 
+const validateMessage = [
+  body("name")
+    .trim()
+    .isAlpha()
+    .withMessage(`Name ${alphaErr}`)
+    .isLength({ min: 1, max: 10 })
+    .withMessage(`Name ${lengthNameErr}`),
+  body("message")
+    .trim()
+    .isLength({ min: 1, max: 50 })
+    .withMessage(`Message ${lengthMessageErr}`),
+];
+
 // @desc Create new message
 // @route POST /new
-const createMessage = (req, res, next) => {
-  const newMessage = {
-    id: messages.length + 1,
-    text: req.body.message,
-    user: req.body.name,
-    added: new Date(),
-  };
-  if (!newMessage.text || !newMessage.user) {
-    const error = new Error(`Please fill all form fields`);
-    error.status = 400;
-    return next(error);
-  }
-  messages.push(newMessage);
-  res.status(201).redirect("/");
-};
+const createMessage = [
+  validateMessage,
+  (req, res, next) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).render("form", {
+        title: "Error with your message",
+        links: links,
+        name: req.body.name,
+        message: req.body.message,
+        errors: errors.array(),
+      });
+    }
+
+    const newMessage = {
+      id: messages.length + 1,
+      text: req.body.message,
+      user: req.body.name,
+      added: new Date(),
+    };
+    messages.push(newMessage);
+    res.status(201).redirect("/");
+  },
+];
+
+// // @desc Create new message
+// // @route POST /new
+// const createMessage = (req, res, next) => {
+//   const newMessage = {
+//     id: messages.length + 1,
+//     text: req.body.message,
+//     user: req.body.name,
+//     added: new Date(),
+//   };
+//   if (!newMessage.text || !newMessage.user) {
+//     const error = new Error(`Please fill all form fields`);
+//     error.status = 400;
+//     return next(error);
+//   }
+//   messages.push(newMessage);
+//   res.status(201).redirect("/");
+// };
 
 // @desc View single message
 // @route GET /message/:id
