@@ -16,7 +16,25 @@
 
     <main id="main-wrapper">
       <h2><%= title %></h2>
-      <form action="/new" method="POST" class="add-new-post-form">
+      <!-- <form
+        action="/new"
+        method="POST"
+        class="add-new-post-form"
+        onsubmit="return validateForm()"
+      >
+        <label for="name">Name: </label>
+        <input type="text" id="name" name="name" /><br />
+        <label for="message">Message: </label>
+        <textarea name="message" id="message"></textarea><br />
+        <button type="submit">Add post</button>
+      </form> -->
+
+      <form
+        action="/new"
+        method="POST"
+        class="add-new-post-form"
+        onsubmit="return validateForm()"
+      >
         <label for="name">Name: </label>
         <input type="text" id="name" name="name" /><br />
         <label for="message">Message: </label>
@@ -27,5 +45,22 @@
     <footer>
       <h3>Glorious Footer</h3>
     </footer>
+
+    <script>
+      function validateForm() {
+        const name = document.getElementById("name").value.trim();
+        const message = document.getElementById("message").value.trim();
+
+        if (!name) {
+          alert("Please fill in your name.");
+          return false; // Prevent form submission
+        }
+        if (!message) {
+          alert("Please fill in message");
+          return false; // Prevent form submission
+        }
+        return true; // Allow form submission
+      }
+    </script>
   </body>
 </html>

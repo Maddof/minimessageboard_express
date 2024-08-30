@@ -83,6 +83,7 @@ const renderForm = (req, res, next) => {
 
 export {
   messages,
+  links,
   createMessage,
   renderIndex,
   renderSingleMessage,

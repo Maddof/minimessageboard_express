@@ -1,6 +1,7 @@
 import express from "express";
 import path from "path";
 import { router } from "./routes/router.js";
+import errorHandler from "./middleware/errorHandler.js";
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -29,6 +30,9 @@ app.use(express.urlencoded({ extended: false }));
 
 // Use the router
 app.use("/", router);
+
+// Catch 404 and forward to error handler
+app.use(errorHandler);
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
