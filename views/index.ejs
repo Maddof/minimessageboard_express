@@ -21,8 +21,8 @@
       <ul class="messages-list">
         <% messages.forEach((message) => { %>
         <li>
-          <span class="username"><b><%= message.user %></b></span
-          >: <%= message.text %> <br />
+          <span class="username"><b><%= message.username %></b></span
+          >: <%= message.msg_cont %> <br />
           <!-- Link to view single message -->
           <a href="/message/<%=message.id %>">View details</a>
         </li>

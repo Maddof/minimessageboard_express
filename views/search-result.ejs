@@ -33,8 +33,8 @@
         <% for (let i = 0; i < messages.length; i++) { %>
         <li>
           <div class="search-result__wrapper">
-            <span><b><%= messages[i].user %></b></span>
-            <span> <%= messages[i].text %> </span>
+            <span><b><%= messages[i].username %></b></span>
+            <span> <%= messages[i].msg_cont %> </span>
             <a href="message/<%= messages[i].id %>"> View details </a>
           </div>
         </li>

@@ -15,9 +15,9 @@
     </header>
     <main id="main-wrapper">
       <h2>Message Detail</h2>
-      <p><strong>User:</strong> <%= message.user %></p>
-      <p><strong>Message:</strong> <%= message.text %></p>
-      <p><strong>Added on:</strong> <%= message.added.toLocaleString() %></p>
+      <p><strong>User:</strong> <%= message.username %></p>
+      <p><strong>Message:</strong> <%= message.msg_cont %></p>
+      <p><strong>Added on:</strong> <%= message.date.toLocaleString() %></p>
       <!-- Link to go back to the messages list -->
       <a href="/">Back to Messages</a>
     </main>
